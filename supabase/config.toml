@@ -1,1 +1,12 @@
 project_id = "qwsoexcarmxilvhubvvw"
+
+[api]
+enabled = true
+port = 54321
+max_rows = 1000
+
+[functions.esp32-attendance]
+verify_jwt = false
+
+[functions.verify-face]
+verify_jwt = false

@@ -18,7 +18,10 @@ export type Database = {
         Row: {
           created_at: string | null
           date: string
+          device_id: string | null
+          face_verified: boolean | null
           id: string
+          location: Json | null
           notes: string | null
           rfid_code: string | null
           status: Database["public"]["Enums"]["attendance_status"]
@@ -30,7 +33,10 @@ export type Database = {
         Insert: {
           created_at?: string | null
           date?: string
+          device_id?: string | null
+          face_verified?: boolean | null
           id?: string
+          location?: Json | null
           notes?: string | null
           rfid_code?: string | null
           status?: Database["public"]["Enums"]["attendance_status"]
@@ -42,7 +48,10 @@ export type Database = {
         Update: {
           created_at?: string | null
           date?: string
+          device_id?: string | null
+          face_verified?: boolean | null
           id?: string
+          location?: Json | null
           notes?: string | null
           rfid_code?: string | null
           status?: Database["public"]["Enums"]["attendance_status"]
@@ -71,6 +80,36 @@ export type Database = {
           description?: string | null
           id?: string
           name?: string
+        }
+        Relationships: []
+      }
+      esp32_devices: {
+        Row: {
+          created_at: string | null
+          device_id: string
+          device_name: string
+          id: string
+          is_active: boolean | null
+          last_seen: string | null
+          location: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          device_id: string
+          device_name: string
+          id?: string
+          is_active?: boolean | null
+          last_seen?: string | null
+          location?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          device_id?: string
+          device_name?: string
+          id?: string
+          is_active?: boolean | null
+          last_seen?: string | null
+          location?: string | null
         }
         Relationships: []
       }
@@ -104,6 +143,45 @@ export type Database = {
         }
         Relationships: []
       }
+      school_settings: {
+        Row: {
+          created_at: string | null
+          id: string
+          latitude: number
+          longitude: number
+          radius_meters: number
+          require_face_verification: boolean | null
+          require_location_verification: boolean | null
+          require_rfid: boolean | null
+          school_name: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          latitude: number
+          longitude: number
+          radius_meters?: number
+          require_face_verification?: boolean | null
+          require_location_verification?: boolean | null
+          require_rfid?: boolean | null
+          school_name: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          latitude?: number
+          longitude?: number
+          radius_meters?: number
+          require_face_verification?: boolean | null
+          require_location_verification?: boolean | null
+          require_rfid?: boolean | null
+          school_name?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       student_classes: {
         Row: {
           class_id: string
@@ -132,6 +210,36 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      student_faces: {
+        Row: {
+          created_at: string | null
+          face_embedding: Json | null
+          face_image_url: string
+          id: string
+          is_active: boolean | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          face_embedding?: Json | null
+          face_image_url: string
+          id?: string
+          is_active?: boolean | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          face_embedding?: Json | null
+          face_image_url?: string
+          id?: string
+          is_active?: boolean | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
       }
       subjects: {
         Row: {
